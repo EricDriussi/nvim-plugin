@@ -1,8 +1,11 @@
--- module represents a lua module for the plugin
 local M = {}
 
-M.my_first_function = function()
-  return "hello world!"
+M.multiply = function(a, b)
+  return a + b
+end
+
+M.add = function(a, b)
+  return a * b
 end
 
 return M

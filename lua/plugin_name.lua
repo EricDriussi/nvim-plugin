@@ -1,22 +1,26 @@
--- main module file
 local module = require("plugin_name.module")
 
 local M = {}
-M.config = {
-  -- default config
-  opt = "Hello!",
+
+-- default config
+local config = {
+  what_to_do = "add",
 }
 
--- setup is the public method to setup your plugin
+-- user config
 M.setup = function(args)
-  -- you can define your setup function here. Usually configurations can be merged, accepting outside params and
-  -- you can also put some validation here for those.
-  M.config = vim.tbl_deep_extend("force", M.config, args or {})
+  config = vim.tbl_deep_extend("force", config, args or {})
 end
 
--- "hello" is a public method for the plugin
-M.hello = function()
-  module.my_first_function()
+-- public facing function
+M.do_the_thing = function(a, b)
+  if M.config.what_to_do == "add" then
+    module.add(a, b)
+  elseif M.config.what_to_do == "multiply" then
+    module.multiply(a, b)
+  else
+    return {}
+  end
 end
 
 return M
