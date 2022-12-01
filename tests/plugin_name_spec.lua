@@ -24,4 +24,3 @@ describe("plugin entrypoint should", function()
     assert.equals(6, plugin.do_the_thing(2, 3))
   end)
 end)
-

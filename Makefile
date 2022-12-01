@@ -10,7 +10,7 @@ help: ## This help menu
 
 .PHONY: lint
 lint:   ## Linting & formatting
-	stylua --check .
+	stylua .
 
 TEST_INIT := tests/test_config_init.lua
 ALL_TESTS := nvim --headless --noplugin -u $(TEST_INIT) -c "PlenaryBustedDirectory tests/ {minimal_init='$(TEST_INIT)'; timeout=500}"
