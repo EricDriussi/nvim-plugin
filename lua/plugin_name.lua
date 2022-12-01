@@ -9,15 +9,19 @@ local config = {
 
 -- user config
 M.setup = function(args)
-  config = vim.tbl_deep_extend("force", config, args or {})
+  if type(args) ~= "table" then
+    error("Setup func only accepts table as arg")
+  else
+    config = vim.tbl_deep_extend("force", config, args or {})
+  end
 end
 
 -- public facing function
 M.do_the_thing = function(a, b)
-  if M.config.what_to_do == "add" then
-    module.add(a, b)
-  elseif M.config.what_to_do == "multiply" then
-    module.multiply(a, b)
+  if config.what_to_do == "add" then
+    return module.add(a, b)
+  elseif config.what_to_do == "multiply" then
+    return module.multiply(a, b)
   else
     return {}
   end
