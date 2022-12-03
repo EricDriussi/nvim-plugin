@@ -1,32 +1,33 @@
 # A Neovim Plugin Template
 
-<!--FIXME-->
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/ellisonleao/nvim-plugin-template/default?style=for-the-badge)
-![Lua](https://img.shields.io/badge/Made%20with%20Lua-blueviolet.svg?style=for-the-badge&logo=lua)
-
 A template repository for Neovim plugins.
 
-<!--TODO.update-->
 ## Features and structure
 
-- Github actions to run tests and check for formatting errors (Stylua)
-- Tests created with [busted](https://olivinelabs.com/busted/) + [plenary.nvim](https://github.com/nvim-lua/plenary.nvim)
+- CI to run tests and format code.
+- Sample dummy logic and tests to go with it.
+- Standard plugin and tests dir structure.
+- Makefile with test recipes for both single file and dir testing (plus watch mode).
+- Tests suite with [busted](https://olivinelabs.com/busted/) + [plenary.nvim](https://github.com/nvim-lua/plenary.nvim)
+- Luarrc and Stylua config
 
-<!--TODO.update-->
-### Plugin structure
+### Dir structure
 
 ```sh
 .
 ├── lua
-│   ├── plugin_name
-│   │   └── module.lua
-│   └── plugin_name.lua
-├── Makefile
+│   ├── plugin_name
+│   │   ├── module.lua
+│   └── plugin_name.lua
 ├── plugin
-│   └── plugin_name.lua
-├── README.md
-├── tests
-│   ├── minimal_init.lua
-│   └── plugin_name
-│       └── plugin_name_spec.lua
+│   └── plugin_name.lua
+└── tests
+   ├── lua
+   │   ├── plugin_name
+   │   │   └── module_spec.lua
+   │   └── plugin_name_spec.lua
+   ├── plugin
+   │   └── command_spec.lua
+   ├── helper.lua
+   └── minimal_init.lua
 ```

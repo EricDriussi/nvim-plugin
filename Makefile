@@ -12,7 +12,7 @@ help: ## This help menu
 lint:   ## Linting & formatting
 	stylua .
 
-TEST_INIT := tests/test_config_init.lua
+TEST_INIT := tests/minimal_init.lua
 ALL_TESTS := nvim --headless --noplugin -u $(TEST_INIT) -c "PlenaryBustedDirectory tests/ {minimal_init='$(TEST_INIT)'; timeout=500}"
 ONE_TEST := nvim --headless --noplugin -u $(TEST_INIT) -c "PlenaryBustedFile $(FILE_PATH)"
 
