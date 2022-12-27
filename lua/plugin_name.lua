@@ -1,27 +1,27 @@
-local module = require("plugin_name.module")
+require("plugin_name.module")
+local config = require("plugin_name.config")
 
 local M = {}
 
--- default config
-local config = {
-  what_to_do = "add",
-}
+local function merge_user_config(conf)
+  setmetatable(config, { __index = vim.tbl_extend("force", config.defaults, conf) })
+end
 
--- user config
 M.setup = function(args)
+  -- validate user config
   if args ~= nil and type(args) ~= "table" then
     error("Setup func only accepts table as arg")
-  else
-    config = vim.tbl_deep_extend("force", config, args or {})
   end
+  merge_user_config(args)
 end
 
 -- public facing function
 M.do_the_thing = function(a, b)
+  local module = Module.new(a, b)
   if config.what_to_do == "add" then
-    return module.add(a, b)
+    return module:add()
   elseif config.what_to_do == "multiply" then
-    return module.multiply(a, b)
+    return module:multiply()
   else
     return {}
   end

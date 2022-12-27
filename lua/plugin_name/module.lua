@@ -1,11 +1,19 @@
-local M = {}
+Module = {}
+Module.__index = Module
 
-M.multiply = function(a, b)
-  return a * b
+function Module.new(a, b)
+  local mod = setmetatable({}, Module)
+  mod.a = a
+  mod.b = b
+  return mod
 end
 
-M.add = function(a, b)
-  return a + b
+function Module:multiply()
+  return self.a * self.b
 end
 
-return M
+function Module:add()
+  return self.a + self.b
+end
+
+return Module
